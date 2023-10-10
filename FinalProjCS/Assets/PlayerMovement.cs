@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     // Start is called before the first frame update
-    DiscreteMovement movement;
+    [SerializeField] DiscreteMovement movement;
     void Awake()
     {
         movement = GetComponent<DiscreteMovement>();
@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector3 vel = Vector3.zero;
         if(Input.GetKey(KeyCode.W)){
             vel.y = 1;
         }
