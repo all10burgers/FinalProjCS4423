@@ -21,7 +21,7 @@ public class RandomSpriteSpawner : MonoBehaviour
         IEnumerator SpawnRandomEnemyRoutine(){
             while(true){
                 yield return new WaitForSeconds(3);
-                GameObject randSprite = Instantiate(RandomSprite, new Vector3(Random.Range(-10,10), Random.Range(-3,10),0), Quaternion.identity);
+                GameObject randSprite = Instantiate(RandomSprite, new Vector3(Random.Range(-40,10), Random.Range(-3,12),0), Quaternion.identity);
                 //Destroy(randSprite,10);
             }
 

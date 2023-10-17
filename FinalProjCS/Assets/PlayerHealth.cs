@@ -25,10 +25,10 @@ public class PlayerHealth : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other){
         if(other.CompareTag("DamageObject")){
             Debug.Log("HELP");
-            TakeDamage(10f);
+            TakeDamage(15f);
         }
-        else if(other.CompareTag("HealthObject")){
-            Heal(10f);
+        if(other.CompareTag("HealthObject")){
+            Heal(15f);
             
             
         }
@@ -37,6 +37,7 @@ public class PlayerHealth : MonoBehaviour
     void TakeDamage(float DamageAmount){
         currHealth -= DamageAmount;
         currHealth = Mathf.Clamp(currHealth, 0f, maxHealth);
+        
         UpdateHealthUI();
     }
     void Heal(float HealAmount){
@@ -46,8 +47,8 @@ public class PlayerHealth : MonoBehaviour
     }
     void UpdateHealthUI(){
         healthSlider.value = currHealth / maxHealth;
-        if(healthSlider.value == 0){
-            SceneManager.LoadScene("MainMenu");
+        if(healthSlider.value <= 0.01f){
+            SceneManager.LoadScene("MainMenuScene");
         }
     }
     

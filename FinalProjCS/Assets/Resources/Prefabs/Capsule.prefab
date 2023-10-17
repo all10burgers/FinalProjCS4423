@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 5156764496148135772}
   m_Layer: 0
   m_Name: Capsule
-  m_TagString: HealthObject
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135,6 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 50
+  scoreValue: 10
 --- !u!114 &5012987895012992731
 MonoBehaviour:
   m_ObjectHideFlags: 0
