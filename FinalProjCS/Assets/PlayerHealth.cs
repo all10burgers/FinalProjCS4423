@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class PlayerHealth : MonoBehaviour
 {
     // Start is called before the first frame update
     public float maxHealth = 100f;
     private float currHealth;
+    
 
     public Slider healthSlider;
     void Start()
@@ -21,12 +22,14 @@ public class PlayerHealth : MonoBehaviour
     {
         
     }
-    void OnCollisionEnter2D(Collision2D collision){
-        if(collision.gameObject.CompareTag("DamageObject")){
+    void OnTriggerEnter2D(Collider2D other){
+        if(other.CompareTag("DamageObject")){
+            Debug.Log("HELP");
             TakeDamage(10f);
         }
-        else if(collision.gameObject.CompareTag("HealthObject")){
+        else if(other.CompareTag("HealthObject")){
             Heal(10f);
+            
             
         }
 
@@ -43,5 +46,9 @@ public class PlayerHealth : MonoBehaviour
     }
     void UpdateHealthUI(){
         healthSlider.value = currHealth / maxHealth;
+        if(healthSlider.value == 0){
+            SceneManager.LoadScene("MainMenu");
+        }
     }
+    
 }
