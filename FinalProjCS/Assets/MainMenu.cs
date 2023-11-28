@@ -15,4 +15,8 @@ public class MainMenu : MonoBehaviour
         Debug.Log("QUIT!");
         Application.Quit(); //this does not work in the editor
     }
+
+    public void OptionsMenu(){
+        SceneManager.LoadScene("OptionsMenu");
+    }
 }
