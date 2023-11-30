@@ -6,11 +6,12 @@ using UnityEngine.SceneManagement;
 public class PlayerHealth : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float maxHealth = 100f;
+    public float maxHealth = 180;
     private float currHealth;
     
 
     public Slider healthSlider;
+    public Text HealthText;
     void Start()
     {
         currHealth = maxHealth;
@@ -25,31 +26,34 @@ public class PlayerHealth : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other){
         if(other.CompareTag("DamageObject")){
             Debug.Log("HELP");
-            TakeDamage(15f);
+            TakeDamage(15);
         }
         if(other.CompareTag("HealthObject")){
-            Heal(15f);
+            Heal(15);
             
             
         }
+      
 
     }
     void TakeDamage(float DamageAmount){
         currHealth -= DamageAmount;
-        currHealth = Mathf.Clamp(currHealth, 0f, maxHealth);
+        currHealth = Mathf.Clamp(currHealth, 0, maxHealth);
         
         UpdateHealthUI();
+
+        if(currHealth <= 0){
+            SceneManager.LoadScene("MainMenuScene");
+        }
     }
     void Heal(float HealAmount){
         currHealth += HealAmount;
-        currHealth = Mathf.Clamp(currHealth, 0f, maxHealth);
+        currHealth = Mathf.Clamp(currHealth, 0, maxHealth);
         UpdateHealthUI();
     }
     void UpdateHealthUI(){
-        healthSlider.value = currHealth / maxHealth;
-        if(healthSlider.value <= 0.01f){
-            SceneManager.LoadScene("MainMenuScene");
-        }
+        HealthText.text = "Health: " + currHealth.ToString();
+        
     }
     
 }

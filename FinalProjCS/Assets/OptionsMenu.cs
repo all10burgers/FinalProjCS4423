@@ -10,9 +10,8 @@ public class OptionsMenu : MonoBehaviour
     public Dropdown resolutionDropdown;
     public Toggle vsync;
     public Toggle fullscreenToggle;
-    public Slider masterVolume;
-    public Slider musicVolume;
-    public Slider FXVolume;
+    
+    
     // Start is called before the first frame update
     public void Start()
     {
@@ -31,16 +30,14 @@ public class OptionsMenu : MonoBehaviour
 
         QualitySettings.vSyncCount = vsync.isOn ? 1 : 0;
         Screen.fullScreen = fullscreenToggle.isOn;
-        AudioListener.volume = masterVolume.value;
+        
     }
 
     public void SaveSetting(){
         PlayerPrefs.SetInt("ResolutionIndex", resolutionDropdown.value);
         PlayerPrefs.SetInt("Vsync", vsync.isOn ? 1 : 0);
         PlayerPrefs.SetInt("Fullscreen", fullscreenToggle.isOn ? 1 : 0);
-        PlayerPrefs.SetFloat("Master Volume", masterVolume.value);
-        PlayerPrefs.SetFloat("Music Volume", musicVolume.value);
-        PlayerPrefs.SetFloat("FX Volume", FXVolume.value);
+        
         PlayerPrefs.Save();
     }
 
@@ -48,9 +45,7 @@ public class OptionsMenu : MonoBehaviour
         resolutionDropdown.value = PlayerPrefs.GetInt("ResolutionIndex", 0);
         vsync.isOn = PlayerPrefs.GetInt("Vsync", 1) == 1;
         fullscreenToggle.isOn = PlayerPrefs.GetInt("Fullscreen", 1) == 1;
-        masterVolume.value = PlayerPrefs.GetFloat("MusicVolume", 1.0f);
-        musicVolume.value = PlayerPrefs.GetFloat("MusicVolume", 1.0f);
-        FXVolume.value = PlayerPrefs.GetFloat("FXVolume", 1.0f);
+        
 
         ApplySetting();
     }

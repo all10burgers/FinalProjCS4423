@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class TimerText : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float totalTime = 600f;
+    public float totalTime = 360f;
     private float currTime = 0f;
     public Text timerText;
     public GameObject gameoverPanel;
